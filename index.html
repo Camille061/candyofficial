@@ -13,12 +13,14 @@
 
     <header class="headers">
 
-        <div class="logo-box">
+        <div class="logo-box"> 
             <img src="img/candy_chibi_noBG.png" class="img-logo">
             <h1>Candy Bot</h1>
         </div>
 
-        <button id="invite-btn">เชิญบอท</button>
+        <button id="invite-btn">
+            <!-- <img src="" alt="" class="logo"> -->
+            เชิญบอท</button>
 
     </header>
 
@@ -43,7 +45,7 @@
         <div class="btnList">
             <button id="commandBtn">คำสั่งบอท</button>
             <button>Dashboard</button>
-            <button>Server Bot</button>
+            <button id="serverBot">Server Bot</button>
         </div>
 
         <div class="stats-wrap">
@@ -86,7 +88,8 @@
             /warning_letter ส่งใบเตือนสมาชิก <br>
             /guess เกมทายคำถาม <br>
             /birthday อวยพรวันเกิด <br>
-            /money ดูเงิน
+            /money ดูเงิน <br>
+            /horror เล่นเกมสยองขวัญ
         </p>
 
     </section>
@@ -97,8 +100,11 @@
             window.location.href =
                 "https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
         }
-
+        let serverBot = document.getElementById("serverBot")
         let command = document.getElementById('commandBtn')
+        serverBot.onclick = () => {
+            window.location.href = "https://discord.gg/NqnRxNr3sC"
+        }
         command.onclick = () => {
             window.location = "#commandBtn"
         }
