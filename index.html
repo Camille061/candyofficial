@@ -28,7 +28,7 @@
     <img src="img/candy_chibi_noBG.png" class="img-main">
 
     <div class="info-box">
-        <h2>Candy Bot</h2>
+        <h2>บอทแคนดี้</h2>
         <h4>สร้างเมื่อ 29 ธันวา 2568</h4>
         <h4>จุดประสงค์: ความสะดวกในการสร้างและใช้งานเซิร์ฟเวอร์ Discord</h4>
         <h4>ออฟชั่น: กันส่งไฟล์ภาพ ป้องกันลิงก์เชิญ และ @everyone / @here</h4>
@@ -41,7 +41,7 @@
 <section class="section-box">
 
     <div class="btnList">
-        <button>คำสั่งบอท</button>
+        <button id="commandBtn">คำสั่งบอท</button>
         <button>Dashboard</button>
         <button>Server Bot</button>
     </div>
@@ -49,7 +49,7 @@
     <div class="stats-wrap">
 
         <div class="stats-info">
-            <h2>Servers 69+</h2>
+            <h2 id="serverCount">Servers Loading...</h2>
             <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png">
         </div>
 
@@ -96,7 +96,21 @@ document.getElementById("invite-btn").onclick = () => {
 window.location.href =
 "https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
 }
+
+let command = document.getElementById('commandBtn') 
+command.onclick = () => {
+    window.location = "#commandBtn"
+}
 </script>
+
+<script>
+fetch("https://candyofficial.onrender.com/servers")
+.then(res => res.json())
+.then(data => {
+    document.getElementById("serverCount").innerText =
+    "Servers " + data.servers;
+});
+</script>   
 
 </body>
 </html>
