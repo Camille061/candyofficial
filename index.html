@@ -49,9 +49,9 @@
         <div class="stats-wrap">
 
             <div class="stats-info">
-                <h2 id="serverCount">Servers Loading...</h2>
-                <h2 id="userCount">Users Loading...</h2>
-                <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png">
+                <h3 id="serverCount">อยู่เซิร์ฟเวอร์ทั้งหมด...</h3>
+                <h3 id="userCount">สมาชิกทั้งหมด...</h3>
+                <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png" style="margin-top: 10px;">
             </div>
 
             <div class="stats-info">
@@ -115,8 +115,8 @@ async function loadStats() {
 
     const data = await res.json();
 
-    serverCount.innerText = "Servers " + data.servers + "+";
-    userCount.innerText = "Users " + data.users + "+";
+    serverCount.innerText = "อยู่เซิร์ฟเวอร์ทั้งหมด " + data.servers;
+    userCount.innerText = "สมาชิกทั้งหมด " + data.users;
 
     console.log("API OK:", data);
 
