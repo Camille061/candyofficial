@@ -2,115 +2,121 @@
 <html lang="th">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Candy Bot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Bot</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="headers">
+    <header class="headers">
 
-    <div class="logo-box">
-        <img src="img/candy_chibi_noBG.png" class="img-logo">
-        <h1>Candy Bot</h1>
-    </div>
-
-    <button id="invite-btn">เชิญบอท</button>
-
-</header>
-
-
-<main class="main-box">
-
-    <img src="img/candy_chibi_noBG.png" class="img-main">
-
-    <div class="info-box">
-        <h2>บอทแคนดี้</h2>
-        <h4>สร้างเมื่อ 29 ธันวา 2568</h4>
-        <h4>จุดประสงค์: ความสะดวกในการสร้างและใช้งานเซิร์ฟเวอร์ Discord</h4>
-        <h4>ออฟชั่น: กันส่งไฟล์ภาพ ป้องกันลิงก์เชิญ และ @everyone / @here</h4>
-        <h4>มีระบบแชท Community และคำสั่งสนุก ๆ อีกมากมาย</h4>
-    </div>
-
-</main>
-
-
-<section class="section-box">
-
-    <div class="btnList">
-        <button id="commandBtn">คำสั่งบอท</button>
-        <button>Dashboard</button>
-        <button>Server Bot</button>
-    </div>
-
-    <div class="stats-wrap">
-
-        <div class="stats-info">
-            <h2 id="serverCount">Servers Loading...</h2>
-            <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png">
+        <div class="logo-box">
+            <img src="img/candy_chibi_noBG.png" class="img-logo">
+            <h1>Candy Bot</h1>
         </div>
 
-        <div class="stats-info">
-            <h2>เชื่อถือได้</h2>
-            <img src="https://cdn-icons-png.freepik.com/512/9827/9827073.png">
+        <button id="invite-btn">เชิญบอท</button>
+
+    </header>
+
+
+    <main class="main-box">
+
+        <img src="img/candy_chibi_noBG.png" class="img-main">
+
+        <div class="info-box">
+            <h2>บอทแคนดี้</h2>
+            <h4>สร้างเมื่อ 29 ธันวา 2568</h4>
+            <h4>จุดประสงค์: ความสะดวกในการสร้างและใช้งานเซิร์ฟเวอร์ Discord</h4>
+            <h4>ออฟชั่น: กันส่งไฟล์ภาพ ป้องกันลิงก์เชิญ และ @everyone / @here</h4>
+            <h4>มีระบบแชท Community และคำสั่งสนุก ๆ อีกมากมาย</h4>
         </div>
 
-        <div class="stats-info">
-            <h2>ใช้งานง่าย</h2>
-            <img src="https://cdn-icons-png.freepik.com/512/5632/5632321.png">
+    </main>
+
+
+    <section class="section-box">
+
+        <div class="btnList">
+            <button id="commandBtn">คำสั่งบอท</button>
+            <button>Dashboard</button>
+            <button>Server Bot</button>
         </div>
 
-    </div>
+        <div class="stats-wrap">
 
-</section>
+            <div class="stats-info">
+                <h2 id="serverCount">Servers Loading...</h2>
+                <h2 id="userCount">Users Loading...</h2>
+                <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png">
+            </div>
 
+            <div class="stats-info">
+                <h2>เชื่อถือได้</h2>
+                <img src="https://cdn-icons-png.freepik.com/512/9827/9827073.png">
+            </div>
 
-<section class="commandBot">
+            <div class="stats-info">
+                <h2>ใช้งานง่าย</h2>
+                <img src="https://cdn-icons-png.freepik.com/512/5632/5632321.png">
+            </div>
 
-<h2>คำสั่งทั้งหมด</h2>
+        </div>
 
-<p>
-/help ดูคำสั่งทั้งหมด <br>
-/create_community_server สร้างเซิร์ฟเวอร์อัตโนมัติ <br>
-/delete_all_server ลบเซิร์ฟเวอร์ทั้งหมด <br>
-/clear_message ลบข้อความตามจำนวน <br>
-/hide เกมซ่อนแอบ <br>
-/fish ตกปลาหาเงิน <br>
-/nickname ตั้งชื่อเล่นสมาชิก <br>
-/announce ประกาศในเซิร์ฟเวอร์ <br>
-/getavatar ดูรูปโปรไฟล์สมาชิก <br>
-/warning_letter ส่งใบเตือนสมาชิก <br>
-/guess เกมทายคำถาม <br>
-/birthday อวยพรวันเกิด <br>
-/money ดูเงิน
-</p>
-
-</section>
+    </section>
 
 
-<script>
-document.getElementById("invite-btn").onclick = () => {
-window.location.href =
-"https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
-}
+    <section class="commandBot">
 
-let command = document.getElementById('commandBtn') 
-command.onclick = () => {
-    window.location = "#commandBtn"
-}
-</script>
+        <h2>คำสั่งทั้งหมด</h2>
 
-<script>
-fetch("stats.json")
-.then(res => res.json())
-.then(data => {
-  document.getElementById("serverCount").innerText =
-  "Servers " + data.servers ;
+        <p>
+            /help ดูคำสั่งทั้งหมด <br>
+            /create_community_server สร้างเซิร์ฟเวอร์อัตโนมัติ <br>
+            /delete_all_server ลบเซิร์ฟเวอร์ทั้งหมด <br>
+            /clear_message ลบข้อความตามจำนวน <br>
+            /hide เกมซ่อนแอบ <br>
+            /fish ตกปลาหาเงิน <br>
+            /nickname ตั้งชื่อเล่นสมาชิก <br>
+            /announce ประกาศในเซิร์ฟเวอร์ <br>
+            /getavatar ดูรูปโปรไฟล์สมาชิก <br>
+            /warning_letter ส่งใบเตือนสมาชิก <br>
+            /guess เกมทายคำถาม <br>
+            /birthday อวยพรวันเกิด <br>
+            /money ดูเงิน
+        </p>
+
+    </section>
+
+
+    <script>
+        document.getElementById("invite-btn").onclick = () => {
+            window.location.href =
+                "https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
+        }
+
+        let command = document.getElementById('commandBtn')
+        command.onclick = () => {
+            window.location = "#commandBtn"
+        }
+    </script>
+
+  <script>
+function loadStats(){
+fetch("https://candy-api-gi58.onrender.com/servers")
+.then(res=>res.json())
+.then(data=>{
+serverCount.innerText="Servers "+data.servers+"+";
+userCount.innerText="Users "+data.users+"+";
 });
-</script> 
+}
+
+loadStats();
+setInterval(loadStats,30000);
+</script>
 
 </body>
 
