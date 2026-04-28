@@ -104,13 +104,13 @@ command.onclick = () => {
 </script>
 
 <script>
-fetch("https://candyofficial.onrender.com/servers   ")
+fetch("stats.json")
 .then(res => res.json())
 .then(data => {
-    document.getElementById("serverCount").innerText =
-    "Servers " + data.servers;
+  document.getElementById("serverCount").innerText =
+  "Servers " + data.servers + "+";
 });
-</script>   
+</script> 
 
 </body>
 
