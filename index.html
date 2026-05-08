@@ -2,139 +2,271 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candy Bot</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Candy Bot — บอท Discord สำหรับจัดการและสร้างความสนุกในเซิร์ฟเวอร์ของคุณ">
+  <meta property="og:title" content="Candy Bot">
+  <meta property="og:description" content="บอท Discord ที่ช่วยสร้างและจัดการเซิร์ฟเวอร์ได้ง่าย">
+  <meta property="og:image" content="https://candyofficial.onrender.com/img/candy_chibi_noBG.png">
+  <title>Candy Bot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="headers">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-box">
+      <div class="logo-ring">
+        <img src="img/candy_chibi_noBG.png" class="img-logo" alt="Candy Bot">
+      </div>
+      <span class="logo-name">Candy<span class="logo-accent">Bot</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#features">ฟีเจอร์</a>
+      <a href="#commands">คำสั่ง</a>
+      <button id="invite-btn" class="btn-invite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.02.013.04.027.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        เชิญบอท
+      </button>
+    </nav>
+  </header>
 
-        <div class="logo-box"> 
-            <img src="img/candy_chibi_noBG.png" class="img-logo">
-            <h1>Candy Bot</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="badge">✨ Discord Bot</div>
+        <h1 class="hero-title">บอทแคนดี้<br><span class="gradient-text">สนุก&nbsp;ง่าย&nbsp;น่าเชื่อถือ</span></h1>
+        <p class="hero-desc">สร้างและจัดการเซิร์ฟเวอร์ Discord ได้ง่ายขึ้น พร้อมฟีเจอร์ป้องกัน ระบบแชท Community และคำสั่งสนุก ๆ อีกมากมาย</p>
+        <div class="hero-meta">
+          <span class="meta-chip">📅 สร้างเมื่อ 29 ธ.ค. 2568</span>
+          <span class="meta-chip">🛡️ ป้องกันลิงก์ & สแปม</span>
+          <span class="meta-chip">💬 ระบบ Community</span>
         </div>
-
-        <button id="invite-btn">
-            <!-- <img src="" alt="" class="logo"> -->
-            เชิญบอท</button>
-
-    </header>
-
-
-    <main class="main-box">
-
-        <img src="img/candy_chibi_noBG.png" class="img-main">
-
-        <div class="info-box">
-            <h2>บอทแคนดี้</h2>
-            <h4>สร้างเมื่อ 29 ธันวา 2568</h4>
-            <h4>จุดประสงค์: ความสะดวกในการสร้างและใช้งานเซิร์ฟเวอร์ Discord</h4>
-            <h4>ออฟชั่น: กันส่งไฟล์ภาพ ป้องกันลิงก์เชิญ และ @everyone / @here</h4>
-            <h4>มีระบบแชท Community และคำสั่งสนุก ๆ อีกมากมาย</h4>
+        <div class="hero-btns">
+          <button id="invite-btn-hero" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.02.013.04.027.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            เชิญบอท
+          </button>
+          <button id="serverBot" class="btn-secondary">เข้า Server</button>
         </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="img-glow"></div>
+        <img src="img/candy_chibi_noBG.png" class="img-main" alt="Candy Bot">
+        <div class="float-badge fb1">🍬 Candy</div>
+        <div class="float-badge fb2">⚡ Online</div>
+      </div>
+    </div>
+  </section>
 
-    </main>
+  <!-- STATS -->
+  <section class="stats-section" id="features">
+    <div class="stats-grid">
+      <div class="stat-card primary-card">
+        <div class="stat-icon">🌐</div>
+        <div class="stat-value" id="serverCount">—</div>
+        <div class="stat-label">เซิร์ฟเวอร์</div>
+        <div class="stat-loading" id="serverLoading">กำลังโหลด...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value" id="userCount">—</div>
+        <div class="stat-label">สมาชิก</div>
+        <div class="stat-loading" id="userLoading">กำลังโหลด...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-value">14+</div>
+        <div class="stat-label">คำสั่ง</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">ออนไลน์</div>
+      </div>
+    </div>
+  </section>
 
+  <!-- FEATURES -->
+  <section class="features-section">
+    <div class="section-header">
+      <h2>ทำไมต้องเลือก <span class="gradient-text">Candy Bot?</span></h2>
+      <p>ฟีเจอร์ครบครัน ใช้งานง่าย และเชื่อถือได้</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>ป้องกันสแปม</h3>
+        <p>กันส่งไฟล์ภาพ ป้องกันลิงก์เชิญ และบล็อก @everyone / @here จากผู้ไม่ได้รับอนุญาต</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏗️</div>
+        <h3>สร้างเซิร์ฟเวอร์</h3>
+        <p>สร้างเซิร์ฟเวอร์ Community อัตโนมัติพร้อมโครงสร้างที่จัดเรียงไว้แล้วด้วยคำสั่งเดียว</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>มินิเกม</h3>
+        <p>เพลิดเพลินกับเกมซ่อนแอบ ตกปลาหาเงิน ทายคำถาม และเกมสยองขวัญในเซิร์ฟเวอร์</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📢</div>
+        <h3>ระบบประกาศ</h3>
+        <p>ส่งประกาศ ใบเตือน อวยพรวันเกิด และจัดการข้อความได้อย่างมีประสิทธิภาพ</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="section-box">
-
-        <div class="btnList">
-            <button id="commandBtn">คำสั่งบอท</button>
-            <button>Dashboard</button>
-            <button id="serverBot">Server Bot</button>
+  <!-- COMMANDS -->
+  <section class="commands-section" id="commands">
+    <div class="section-header">
+      <h2>คำสั่ง<span class="gradient-text">ทั้งหมด</span></h2>
+      <p>พิมพ์ /help ในเซิร์ฟเวอร์เพื่อดูรายละเอียดเพิ่มเติม</p>
+    </div>
+    <div class="commands-grid">
+      <div class="cmd-card">
+        <span class="cmd-tag utility">Utility</span>
+        <div class="cmd-list">
+          <div class="cmd-item"><code>/help</code><span>ดูคำสั่งทั้งหมด</span></div>
+          <div class="cmd-item"><code>/create_community_server</code><span>สร้างเซิร์ฟเวอร์อัตโนมัติ</span></div>
+          <div class="cmd-item"><code>/delete_all_server</code><span>ลบเซิร์ฟเวอร์ทั้งหมด</span></div>
+          <div class="cmd-item"><code>/clear_message</code><span>ลบข้อความตามจำนวน</span></div>
+          <div class="cmd-item"><code>/announce</code><span>ประกาศในเซิร์ฟเวอร์</span></div>
         </div>
-
-        <div class="stats-wrap">
-
-            <div class="stats-info">
-                <h3 id="serverCount">อยู่เซิร์ฟเวอร์ทั้งหมด...</h3>
-                <h3 id="userCount">สมาชิกทั้งหมด...</h3>
-                <img src="https://images.icon-icons.com/2108/PNG/512/discord_icon_130958.png" style="margin-top: 10px;">
-            </div>
-
-            <div class="stats-info">
-                <h2>เชื่อถือได้</h2>
-                <img src="https://cdn-icons-png.freepik.com/512/9827/9827073.png">
-            </div>
-
-            <div class="stats-info">
-                <h2>ใช้งานง่าย</h2>
-                <img src="https://cdn-icons-png.freepik.com/512/5632/5632321.png">
-            </div>
-
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-tag social">Social</span>
+        <div class="cmd-list">
+          <div class="cmd-item"><code>/nickname</code><span>ตั้งชื่อเล่นสมาชิก</span></div>
+          <div class="cmd-item"><code>/getavatar</code><span>ดูรูปโปรไฟล์สมาชิก</span></div>
+          <div class="cmd-item"><code>/warning_letter</code><span>ส่งใบเตือนสมาชิก</span></div>
+          <div class="cmd-item"><code>/birthday</code><span>อวยพรวันเกิด</span></div>
+          <div class="cmd-item"><code>/money</code><span>ดูเงิน</span></div>
         </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-tag fun">Fun</span>
+        <div class="cmd-list">
+          <div class="cmd-item"><code>/hide</code><span>เกมซ่อนแอบ</span></div>
+          <div class="cmd-item"><code>/fish</code><span>ตกปลาหาเงิน</span></div>
+          <div class="cmd-item"><code>/guess</code><span>เกมทายคำถาม</span></div>
+          <div class="cmd-item"><code>/horror</code><span>เล่นเกมสยองขวัญ</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    </section>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <div class="cta-glow"></div>
+      <img src="img/candy_chibi_noBG.png" class="cta-img" alt="Candy Bot">
+      <div class="cta-text">
+        <h2>พร้อมลองใช้งานแล้วหรือยัง?</h2>
+        <p>เพิ่ม Candy Bot เข้าเซิร์ฟเวอร์ของคุณได้เลย ฟรี!</p>
+        <div class="cta-btns">
+          <button id="cta-invite" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.02.013.04.027.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            เชิญบอทเลย
+          </button>
+          <button id="cta-server" class="btn-outline">เข้าร่วม Server</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo-box">
+          <img src="img/candy_chibi_noBG.png" class="footer-logo" alt="Candy Bot">
+          <span class="logo-name">Candy<span class="logo-accent">Bot</span></span>
+        </div>
+        <p>บอท Discord สำหรับจัดการเซิร์ฟเวอร์<br>และสร้างความสนุกในชุมชนของคุณ</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>ลิงก์</h4>
+          <a id="footer-invite" href="#">เชิญบอท</a>
+          <a id="footer-server" href="#">เข้า Server</a>
+          <a href="#commands">คำสั่งทั้งหมด</a>
+        </div>
+        <div class="footer-col">
+          <h4>ฟีเจอร์</h4>
+          <a href="#features">ป้องกันสแปม</a>
+          <a href="#features">มินิเกม</a>
+          <a href="#features">ระบบประกาศ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2568 CandyBot · Made with 🍬 for Discord</span>
+      <span class="footer-status"><span class="status-dot"></span>ออนไลน์</span>
+    </div>
+  </footer>
 
-    <section class="commandBot">
+  <script>
+    const INVITE_URL = "https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
+    const SERVER_URL = "https://discord.gg/NqnRxNr3sC";
 
-        <h2>คำสั่งทั้งหมด</h2>
+    document.querySelectorAll('#invite-btn, #invite-btn-hero, #cta-invite, #footer-invite').forEach(btn => {
+      btn.onclick = () => window.open(INVITE_URL, '_blank');
+    });
+    document.querySelectorAll('#serverBot, #cta-server, #footer-server').forEach(btn => {
+      btn.onclick = () => window.open(SERVER_URL, '_blank');
+    });
 
-        <p>
-            /help ดูคำสั่งทั้งหมด <br>
-            /create_community_server สร้างเซิร์ฟเวอร์อัตโนมัติ <br>
-            /delete_all_server ลบเซิร์ฟเวอร์ทั้งหมด <br>
-            /clear_message ลบข้อความตามจำนวน <br>
-            /hide เกมซ่อนแอบ <br>
-            /fish ตกปลาหาเงิน <br>
-            /nickname ตั้งชื่อเล่นสมาชิก <br>
-            /announce ประกาศในเซิร์ฟเวอร์ <br>
-            /getavatar ดูรูปโปรไฟล์สมาชิก <br>
-            /warning_letter ส่งใบเตือนสมาชิก <br>
-            /guess เกมทายคำถาม <br>
-            /birthday อวยพรวันเกิด <br>
-            /money ดูเงิน <br>
-            /horror เล่นเกมสยองขวัญ
-        </p>
-
-    </section>
-
-
-    <script>
-        document.getElementById("invite-btn").onclick = () => {
-            window.location.href =
-                "https://discord.com/oauth2/authorize?client_id=1454904927699734731&permissions=8&scope=bot";
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
         }
-        let serverBot = document.getElementById("serverBot")
-        let command = document.getElementById('commandBtn')
-        serverBot.onclick = () => {
-            window.location.href = "https://discord.gg/NqnRxNr3sC"
-        }
-        command.onclick = () => {
-            window.location = "#commandBtn"
-        }
-    </script>
-<script>
-const serverCount = document.getElementById("serverCount");
-const userCount = document.getElementById("userCount");
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.stat-card, .feature-card, .cmd-card').forEach(el => {
+      observer.observe(el);
+    });
 
-async function loadStats() {
-  try {
-    const res = await fetch("https://candy-api-gi58.onrender.com/servers");
+    // Stats with retry
+    const serverCountEl = document.getElementById("serverCount");
+    const userCountEl = document.getElementById("userCount");
+    const serverLoading = document.getElementById("serverLoading");
+    const userLoading = document.getElementById("userLoading");
 
-    if (!res.ok) throw new Error("HTTP " + res.status);
+    async function loadStats() {
+      try {
+        const res = await fetch("https://candy-api-gi58.onrender.com/servers");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        serverCountEl.textContent = data.servers?.toLocaleString() ?? "—";
+        userCountEl.textContent = data.users?.toLocaleString() ?? "—";
+        if (serverLoading) serverLoading.style.display = "none";
+        if (userLoading) userLoading.style.display = "none";
+      } catch (err) {
+        console.warn("Stats API unavailable:", err);
+        serverCountEl.textContent = "—";
+        userCountEl.textContent = "—";
+        if (serverLoading) serverLoading.textContent = "ไม่สามารถโหลดได้";
+        if (userLoading) userLoading.textContent = "ไม่สามารถโหลดได้";
+      }
+    }
 
-    const data = await res.json();
-
-    serverCount.innerText = "อยู่เซิร์ฟเวอร์ทั้งหมด " + data.servers;
-    userCount.innerText = "สมาชิกทั้งหมด " + data.users;
-
-    console.log("API OK:", data);
-
-  } catch (err) {
-    console.error("API error:", err);
-  }
-}
-
-loadStats();
-setInterval(loadStats, 30000);
-</script>
-
+    loadStats();
+    setInterval(loadStats, 30000);
+  </script>
 </body>
-
 </html>
