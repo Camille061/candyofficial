@@ -1,0 +1,16 @@
+{
+  "name": "candy-viewer-backend",
+  "version": "1.0.0",
+  "description": "Live viewer counter via WebSocket for Candy Bot website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "ws": "^8.17.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

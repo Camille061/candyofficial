@@ -1,0 +1,180 @@
+<!--
+  ====================================================
+  CANDY BOT — Live Viewer Widget
+  วางส่วนนี้ไว้ในหน้าเว็บที่ต้องการแสดงผู้เข้าชม
+  ====================================================
+  แก้ค่า WS_URL ด้านล่างให้ตรงกับ server ของคุณ
+  - local dev  : ws://localhost:3001
+  - production : wss://your-domain.com  (ต้องใช้ wss:// เมื่อเว็บเป็น https)
+-->
+
+<!-- ── STYLE ── -->
+<style>
+#viewer-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
+  font-family: "Mitr", sans-serif;
+  font-size: 14px;
+  color: #f0eaf8;
+  user-select: none;
+  transition: opacity .3s;
+}
+#viewer-widget .vw-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,.7);
+  flex-shrink: 0;
+  animation: vw-blink 2s ease-in-out infinite;
+}
+#viewer-widget .vw-dot.offline { background: #888; box-shadow: none; animation: none; }
+#viewer-widget .vw-count { font-weight: 600; color: #fff; min-width: 1ch; }
+#viewer-widget .vw-label { color: rgba(240,234,248,.6); }
+@keyframes vw-blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* Sparkline tooltip popup */
+#viewer-popup {
+  position: fixed;
+  background: rgba(13,11,20,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-family: "Mitr", sans-serif;
+  font-size: 13px;
+  color: #f0eaf8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+  z-index: 9999;
+  min-width: 200px;
+}
+#viewer-popup.show { opacity: 1; }
+#viewer-popup .vp-title { font-size: 11px; color: rgba(240,234,248,.5); margin-bottom: 8px; letter-spacing: .5px; text-transform: uppercase; }
+#viewer-popup .vp-row { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 4px; }
+#viewer-popup .vp-val { font-weight: 600; }
+.vw-spark { display: flex; align-items: flex-end; gap: 2px; height: 18px; cursor: pointer; }
+.vw-spark span { width: 5px; border-radius: 2px 2px 0 0; background: rgba(168,85,247,.5); transition: background .2s; }
+.vw-spark span.cur { background: #a855f7; }
+</style>
+
+<!-- ── WIDGET HTML ── -->
+<div id="viewer-widget">
+  <span class="vw-dot" id="vwDot"></span>
+  <span class="vw-count" id="vwCount">—</span>
+  <span class="vw-label">กำลังดูอยู่</span>
+  <div class="vw-spark" id="vwSpark" title="ย้อนหลัง 30 นาที"></div>
+</div>
+
+<div id="viewer-popup">
+  <div class="vp-title">สถิติผู้เข้าชม</div>
+  <div class="vp-row"><span>ตอนนี้</span><span class="vp-val" id="vpNow">—</span></div>
+  <div class="vp-row"><span>สูงสุด (30 นาที)</span><span class="vp-val" id="vpMax">—</span></div>
+  <div class="vp-row"><span>เฉลี่ย (30 นาที)</span><span class="vp-val" id="vpAvg">—</span></div>
+</div>
+
+<!-- ── SCRIPT ── -->
+<script>
+(function () {
+  // ▼▼▼ แก้ URL นี้ให้ตรงกับ server ของคุณ ▼▼▼
+  const WS_URL = "ws://localhost:3001";
+  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+  const elCount  = document.getElementById("vwCount");
+  const elDot    = document.getElementById("vwDot");
+  const elSpark  = document.getElementById("vwSpark");
+  const popup    = document.getElementById("viewer-popup");
+  const vpNow    = document.getElementById("vpNow");
+  const vpMax    = document.getElementById("vpMax");
+  const vpAvg    = document.getElementById("vpAvg");
+
+  let ws = null;
+  let reconnectTimer = null;
+  let pingTimer = null;
+  let histData = Array(30).fill(0);
+
+  // ── Sparkline ──
+  function renderSpark(history) {
+    const max = Math.max(...history, 1);
+    elSpark.innerHTML = history.map((v, i) => {
+      const h = Math.max(2, Math.round((v / max) * 18));
+      const cls = i === history.length - 1 ? " cur" : "";
+      return `<span class="${cls}" style="height:${h}px"></span>`;
+    }).join("");
+  }
+
+  function updateUI(data) {
+    elCount.textContent = data.count;
+    histData = data.history || histData;
+    renderSpark(histData);
+
+    const max = Math.max(...histData);
+    const avg = Math.round(histData.reduce((a,b) => a+b,0) / histData.length);
+    vpNow.textContent = data.count + " คน";
+    vpMax.textContent = max + " คน";
+    vpAvg.textContent = avg + " คน";
+  }
+
+  // ── Popup on hover ──
+  elSpark.addEventListener("mouseenter", (e) => {
+    popup.classList.add("show");
+    movePopup(e);
+  });
+  elSpark.addEventListener("mousemove", movePopup);
+  elSpark.addEventListener("mouseleave", () => popup.classList.remove("show"));
+
+  function movePopup(e) {
+    const pw = popup.offsetWidth || 200;
+    let x = e.clientX - pw / 2;
+    let y = e.clientY - popup.offsetHeight - 14;
+    if (x < 8) x = 8;
+    if (y < 8) y = e.clientY + 20;
+    popup.style.left = x + "px";
+    popup.style.top  = y + "px";
+  }
+
+  // ── WebSocket ──
+  function connect() {
+    if (ws) { ws.onclose = null; ws.close(); }
+
+    // ส่ง page ปัจจุบันไปด้วย
+    const page = encodeURIComponent(location.pathname);
+    ws = new WebSocket(`${WS_URL}?page=${page}`);
+
+    ws.onopen = () => {
+      elDot.classList.remove("offline");
+      clearTimeout(reconnectTimer);
+      pingTimer = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN)
+          ws.send(JSON.stringify({ type: "ping" }));
+      }, 25000);
+    };
+
+    ws.onmessage = (e) => {
+      try {
+        const msg = JSON.parse(e.data);
+        if (msg.type === "init" || msg.type === "update") {
+          updateUI(msg.data);
+        }
+      } catch (_) {}
+    };
+
+    ws.onclose = () => {
+      elDot.classList.add("offline");
+      elCount.textContent = "—";
+      clearInterval(pingTimer);
+      // reconnect หลัง 5 วินาที
+      reconnectTimer = setTimeout(connect, 5000);
+    };
+
+    ws.onerror = () => ws.close();
+  }
+
+  connect();
+})();
+</script>
